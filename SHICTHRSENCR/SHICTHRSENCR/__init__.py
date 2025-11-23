@@ -9,6 +9,7 @@ import os
 from colorama import init
 init()
 from .utils.hash.SHRENCR_get_hash_code import get_hash_code
+from .utils.hash.SHRENCR_get_file_hash_code import get_file_hash_code
 from .utils.base64.SHRENCR_en_base64_code import en_base64_code
 from .utils.base64.SHRENCR_de_base64_code import de_base64_code
 from .utils.identity.SHRENCR_check_identity_number import check_identity_number
@@ -29,28 +30,40 @@ def SHRENCR_get_hash_code(org_code : str) -> str:
     try:
         return get_hash_code(org_code)
     except Exception as e:
-        raise SHRENCRException(f"SHRENCR [ERROR.3000] unable to get hash code. | {e}")
+        raise SHRENCRException(f"SHRENCRException [ERROR.3000] unable to get hash code. | {str(e)}")
+
+def SHRENCR_get_file_hash_code(path : str) -> str:
+    try:
+        if os.path.exists(path):
+            if os.path.isfile(path):
+                return get_file_hash_code(path)
+            else:
+                raise SHRENCRException(f"SHRENCRException [ERROR.3000.1.0] only support file. | {path}")
+        else:
+            raise SHRENCRException(f"SHRENCRException [ERROR.3000.1.1] file not found. | {path}")
+    except Exception as e:
+        raise SHRENCRException(f"SHRENCRException [ERROR.3000.1.2] unable to get file hash code. | {str(e)}")
 
 def SHRENCR_en_base64_code(org_code : str) -> str:
     try:
         return en_base64_code(org_code)
     except Exception as e:
-        raise SHRENCRException(f"SHRENCR [ERROR.3001] unable to encrypt base64 code. | {e}")
+        raise SHRENCRException(f"SHRENCRException [ERROR.3001] unable to encrypt base64 code. | {str(e)}")
 
 def SHRENCR_de_base64_code(en_code : str) -> str:
     try:
         return de_base64_code(en_code)
     except Exception as e:
-        raise SHRENCRException(f"SHRENCR [ERROR.3002] unable to decrypt base64 code. | {e}")
+        raise SHRENCRException(f"SHRENCRException [ERROR.3002] unable to decrypt base64 code. | {str(e)}")
 
 def SHRENCR_check_identity_number(identity_number : str) -> bool:
     try:
         return check_identity_number(identity_number)
     except Exception as e:
-        raise SHRENCRException(f"SHRENCR [ERROR.3003] unable to check identity number. | {e}")
+        raise SHRENCRException(f"SHRENCRException [ERROR.3003] unable to check identity number. | {str(e)}")
 
 def SHRENCR_check_chinese_text(text : str) -> bool:
     try:
         return check_chinese_text(text)
     except Exception as e:
-        raise SHRENCRException(f"SHRENCR [ERROR.3004] unable to check chinese text. | {e}")
+        raise SHRENCRException(f"SHRENCRException [ERROR.3004] unable to check chinese text. | {str(e)}")
