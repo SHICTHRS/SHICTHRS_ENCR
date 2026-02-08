@@ -15,6 +15,7 @@ from .utils.base64.SHRENCR_en_base64_code import en_base64_code
 from .utils.base64.SHRENCR_de_base64_code import de_base64_code
 from .utils.identity.SHRENCR_check_identity_number import check_identity_number
 from .utils.identity.SHRENCR_check_chinese_text import check_chinese_text
+from .utils.identity.SHRENCR_check_chinese_phone_number import check_chinese_phone_number
 
 print('\033[1mWelcome to use SHRENCR - ENCR System\033[0m\n|  \033[1;34mGithub : https://github.com/JNTMTMTM/SHICTHRS_ENCR\033[0m')
 print('|  \033[1mAlgorithms = rule ; Questioning = approval\033[0m')
@@ -78,3 +79,9 @@ def SHRENCR_check_chinese_text(text : str) -> bool:
         return check_chinese_text(text)
     except Exception as e:
         raise SHRENCRException(f"SHRENCR [ERROR.3004] unable to check chinese text. | {str(e)}")
+
+def SHRENCR_check_chinese_phone_number(phone_number : str) -> bool:
+    try:
+        return check_chinese_phone_number(phone_number)
+    except Exception as e:
+        raise SHRENCRException(f"SHRENCR [ERROR.3005] unable to check chinese phone number. | {str(e)}")
