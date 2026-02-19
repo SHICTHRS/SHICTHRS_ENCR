@@ -17,6 +17,7 @@ from .utils.identity.SHRENCR_check_identity_number import check_identity_number
 from .utils.identity.SHRENCR_check_chinese_text import check_chinese_text
 from .utils.identity.SHRENCR_check_chinese_phone_number import check_chinese_phone_number
 from .utils.identity.SHRENCR_check_email import check_email
+from .utils.identity.SHRENCR_identity_number_mask import get_identity_number_mask
 from .utils.password.SHRENCR_check_password import check_password
 
 print('\033[1mWelcome to use SHRENCR - ENCR System\033[0m\n|  \033[1;34mGithub : https://github.com/JNTMTMTM/SHICTHRS_ENCR\033[0m')
@@ -26,7 +27,7 @@ print('|  \033[1mCopyright : © 2025-2026 SHICTHRS, Std. All rights reserved.\03
 __all__ = ['SHRENCR_get_hash_code' , 'SHRENCR_get_file_hash_code' , 'SHRENCR_get_hash_code_mask' ,
             'SHRENCR_en_base64_code' , 'SHRENCR_de_base64_code' , 'SHRENCR_check_identity_number' ,
             'SHRENCR_check_chinese_text' , 'SHRENCR_check_chinese_phone_number' , 'SHRENCR_check_email' ,
-            'SHRENCR_check_SHICTHRS_standard_password']
+            'SHRENCR_check_SHICTHRS_standard_password' , 'SHRENCR_get_identity_number_mask']
 
 class SHRENCRException(Exception):
     def __init__(self , message: str) -> None:
@@ -100,3 +101,9 @@ def SHRENCR_check_SHICTHRS_standard_password(password : str) -> bool:
         return check_password(password)
     except Exception as e:
         raise SHRENCRException(f"SHRENCR [ERROR.3007] unable to check SHICTHRS standard password. | {str(e)}")
+    
+def SHRENCR_get_identity_number_mask(identity_number : str) -> str:
+    try:
+        return get_identity_number_mask(identity_number)
+    except Exception as e:
+        raise SHRENCRException(f"SHRENCR [ERROR.3008] unable to get identity number mask. | {str(e)}")
