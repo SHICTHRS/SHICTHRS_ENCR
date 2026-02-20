@@ -18,6 +18,7 @@ from .utils.identity.SHRENCR_check_chinese_text import check_chinese_text
 from .utils.identity.SHRENCR_check_chinese_phone_number import check_chinese_phone_number
 from .utils.identity.SHRENCR_check_email import check_email
 from .utils.identity.SHRENCR_identity_number_mask import get_identity_number_mask
+from .utils.identity.SHRENCR_check_chinese_name import check_is_chinese_name
 from .utils.password.SHRENCR_check_password import check_password
 
 print('\033[1mWelcome to use SHRENCR - ENCR System\033[0m\n|  \033[1;34mGithub : https://github.com/JNTMTMTM/SHICTHRS_ENCR\033[0m')
@@ -107,3 +108,9 @@ def SHRENCR_get_identity_number_mask(identity_number : str) -> str:
         return get_identity_number_mask(identity_number)
     except Exception as e:
         raise SHRENCRException(f"SHRENCR [ERROR.3008] unable to get identity number mask. | {str(e)}")
+    
+def SHRENCR_check_is_chinese_name(name : str) -> str:
+    try:
+        return check_is_chinese_name(name)
+    except Exception as e:
+        raise SHRENCRException(f"SHRENCR [ERROR.3009] unable to check is input chinese name. | {str(e)}")
