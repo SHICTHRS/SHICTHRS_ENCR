@@ -28,7 +28,7 @@ print('|  \033[1mCopyright : © 2025-2026 SHICTHRS, Std. All rights reserved.\03
 __all__ = ['SHRENCR_get_hash_code' , 'SHRENCR_get_file_hash_code' , 'SHRENCR_get_hash_code_mask' ,
             'SHRENCR_en_base64_code' , 'SHRENCR_de_base64_code' , 'SHRENCR_check_identity_number' ,
             'SHRENCR_check_chinese_text' , 'SHRENCR_check_chinese_phone_number' , 'SHRENCR_check_email' ,
-            'SHRENCR_check_SHICTHRS_standard_password' , 'SHRENCR_get_identity_number_mask']
+            'SHRENCR_check_SHICTHRS_standard_password' , 'SHRENCR_get_identity_number_mask' , 'SHRENCR_check_is_chinese_name']
 
 class SHRENCRException(Exception):
     def __init__(self , message: str) -> None:
