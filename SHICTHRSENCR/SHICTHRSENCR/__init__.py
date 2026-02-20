@@ -20,6 +20,7 @@ from .utils.identity.SHRENCR_check_email import check_email
 from .utils.identity.SHRENCR_identity_number_mask import get_identity_number_mask
 from .utils.identity.SHRENCR_check_chinese_name import check_is_chinese_name
 from .utils.password.SHRENCR_check_password import check_password
+from .utils.password.SHRENCR_get_password_strength import get_password_strength
 
 print('\033[1mWelcome to use SHRENCR - ENCR System\033[0m\n|  \033[1;34mGithub : https://github.com/JNTMTMTM/SHICTHRS_ENCR\033[0m')
 print('|  \033[1mAlgorithms = rule ; Questioning = approval\033[0m')
@@ -28,7 +29,8 @@ print('|  \033[1mCopyright : © 2025-2026 SHICTHRS, Std. All rights reserved.\03
 __all__ = ['SHRENCR_get_hash_code' , 'SHRENCR_get_file_hash_code' , 'SHRENCR_get_hash_code_mask' ,
             'SHRENCR_en_base64_code' , 'SHRENCR_de_base64_code' , 'SHRENCR_check_identity_number' ,
             'SHRENCR_check_chinese_text' , 'SHRENCR_check_chinese_phone_number' , 'SHRENCR_check_email' ,
-            'SHRENCR_check_SHICTHRS_standard_password' , 'SHRENCR_get_identity_number_mask' , 'SHRENCR_check_is_chinese_name']
+            'SHRENCR_check_SHICTHRS_standard_password' , 'SHRENCR_get_identity_number_mask' , 'SHRENCR_check_is_chinese_name' ,
+            'SHRENCR_get_password_strength']
 
 class SHRENCRException(Exception):
     def __init__(self , message: str) -> None:
@@ -114,3 +116,9 @@ def SHRENCR_check_is_chinese_name(name : str) -> str:
         return check_is_chinese_name(name)
     except Exception as e:
         raise SHRENCRException(f"SHRENCR [ERROR.3009] unable to check is input chinese name. | {str(e)}")
+    
+def SHRENCR_get_password_strength(password : str) -> str:
+    try:
+        return get_password_strength(password)
+    except Exception as e:
+        raise SHRENCRException(f"SHRENCR [ERROR.3010] unable to get password strength. | {str(e)}")
