@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
 setup(name='SHICTHRSENCR',
-      version='1.10.0',
+      version='1.10.1',
       description='SHICTHRS ENCR system',
-      url='https://github.com/JNTMTMTM/SHICTHRS_ENCR',
+      url='https://github.com/SHICTHRS/SHICTHRS_ENCR',
       author='SHICTHRS',
       author_email='contact@shicthrs.com',
       license='GPL-3.0',
